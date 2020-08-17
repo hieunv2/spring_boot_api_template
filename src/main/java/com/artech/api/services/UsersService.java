@@ -9,6 +9,8 @@ public interface UsersService extends BaseService<Users, Integer>{
 
     Optional<Users> create(UserRequest request);
 
+    Optional<Users> update(UserRequest request, int id);
+
     Users findUserByUserName(String name);
 
 //

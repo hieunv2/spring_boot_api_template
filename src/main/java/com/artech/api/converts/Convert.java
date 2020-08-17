@@ -14,9 +14,9 @@ import java.util.List;
 
 
 @Component
-public class UserConvert {
+public class Convert {
 
-    private UserConvert(){}
+    private Convert(){}
 
     public UserResponse toResponse(Users user){
         UserResponse userResponse = new UserResponse();
@@ -30,8 +30,11 @@ public class UserConvert {
         return responses;
     }
 
-    public Users toUser(UserRequest userRequest, List<Role> roles){
+    public Users toUser(UserRequest userRequest, List<Role> roles, Users oldUser){
         Users user = new Users();
+        if(oldUser != null){
+            user = oldUser;
+        }
         BeanUtils.copyProperties(userRequest,user);
         user.setRoles(roles);
         return user;
