@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class JwtUserDetailServiceImpl implements UserDetailsService {
@@ -25,7 +26,7 @@ public class JwtUserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) {
-        Users users = userService.findUserByUserName(userName);
+        Optional<Users> users = userService.findUserByUserName(userName);
         List<GrantedAuthority> grantList = new ArrayList<>();
         List<RoleDTO> roleNames = this.roleService.findByUsersUserName(userName);
         if (roleNames != null) {
@@ -33,6 +34,6 @@ public class JwtUserDetailServiceImpl implements UserDetailsService {
                 grantList.add(new SimpleGrantedAuthority(role.getRoleName()));
             }
         }
-        return new User(users.getUserName(), users.getPassword(), grantList);
+        return new User(users.get().getUserName(), users.get().getPassword(), grantList);
     }
 }

@@ -15,10 +15,10 @@ public class UserController extends BaseController<Users> {
     @Autowired
     private Convert convert;
 
-    @Override
-    protected void setModel() {
-        this.model = new Users();
-    }
+//    @Override
+//    protected void setModel() {
+//        this.model = new Users();
+//    }
 
     UserController(UsersService userService) {
         super(userService);

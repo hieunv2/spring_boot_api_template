@@ -11,7 +11,7 @@ public interface UsersService extends BaseService<Users, Integer>{
 
     Optional<Users> update(UserRequest request, int id);
 
-    Users findUserByUserName(String name);
+    Optional<Users> findUserByUserName(String name);
 
 //
 //     public List<Users> getAll() {

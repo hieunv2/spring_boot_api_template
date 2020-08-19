@@ -66,7 +66,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, Users, Inte
     }
 
     @Override
-    public Users findUserByUserName(String name) {
+    public  Optional<Users> findUserByUserName(String name) {
         return repo.findByUserName(name);
     }
 }

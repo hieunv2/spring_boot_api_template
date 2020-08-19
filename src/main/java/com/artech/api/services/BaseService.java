@@ -6,6 +6,8 @@ public interface BaseService<T, ID> {
 
     Optional<T> save(T entity);
 
+    Optional<T> update(T entity, ID id);
+
     <S extends T> Iterable<S> saveAll(Iterable<S> entities);
 
     Optional<T> findById(ID id);
