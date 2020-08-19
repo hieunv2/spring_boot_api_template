@@ -1,0 +1,32 @@
+version: "3"
+services:
+  artech-db:
+    container_name: artech-db
+    image: "mysql:8.0.21"
+
+    ports:
+      - "3308:3306"
+    restart: always
+    networks:
+      - api
+    environment:
+      - MYSQL_ROOT_PASSWORD=Arrow@123
+      - MYSQL_DATABASE=agency
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Arrow@123
+
+  app:
+    container_name: app
+    build:
+      context: ./
+    volumes:
+      - .:/my_app
+    ports:
+      - "8088:8085"
+    depends_on:
+      - artech-db
+    networks:
+      - api
+
+networks:
+  api:
